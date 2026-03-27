@@ -19,6 +19,9 @@ services:
       dockerfile: Dockerfile
     ports:
       - "80:80"
+      - "443:443"   # 【新增】暴露 HTTPS 端口
+    volumes:
+      - ./ssl:/etc/nginx/ssl:ro   # 【新增】以只读模式挂载证书
     depends_on:
       - backend
     restart: unless-stopped
